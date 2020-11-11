@@ -10,17 +10,16 @@ import java.util.Optional;
 public class BookService {
     private BookRepository bookRepository;
 
-    public void create(Book book){
+    public void create(Book book) {
         bookRepository.create(book);
     }
-
 
 
     public void update(Book book) {
         bookRepository.update(book);
     }
 
-    public Optional<Book> getCarById(Long id) {
+    public Optional<Book> getBookById(Long id) {
         return bookRepository.findOne(id);
     }
 

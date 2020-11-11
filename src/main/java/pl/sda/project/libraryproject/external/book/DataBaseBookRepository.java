@@ -43,7 +43,7 @@ public class DataBaseBookRepository implements BookRepository {
 
     @Override
     public void delete(Long id) {
-jpaBookRepository.deleteById(id);
+        jpaBookRepository.deleteById(id);
     }
 
 
