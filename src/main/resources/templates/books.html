@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+    <style>
+        .odd{
+            background-color: goldenrod;
+        }
+        .even{
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+
+<h1
+    th:unless="${books.size() > 0}">Brak książek w bibiotece
+</h1>
+<table th:if="${books.size() > 0}">
+<thead>
+<tr>
+    <td>Tytuł</td>
+    <td>Autor</td>
+    <td>Ilość dostępnych sztuk</td>
+</tr>
+</thead>
+<tbody>
+<tr th:each="book, iterStat : ${books}" th:class="${iterStat.isOdd()}? 'odd' : 'even'">
+    <td><span th:text="${book.title}"/></td>
+    <td><span th:text="${book.author}"/></td>
+    <td><span th:text="${book.quantity}"/></td>
+
+</tr>
+</tbody>
+</table>
+</body>
+</html>

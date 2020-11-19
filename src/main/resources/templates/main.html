@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+</head>
+<body>
+<h1>Bibioteka
+</h1>
+<h2>Dziś jest <span th:text="${date}"></span></h2>
+Dostępne ksiązki do wypożyczenia:
+<ul>
+    <li th:each="title: ${titles}">
+        <span th:text="${title}"/></li>
+
+</ul>
+</body>
+</html>

@@ -2,10 +2,10 @@ package pl.sda.project.libraryproject.external.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import pl.sda.project.libraryproject.domain.book.Book;
+
 import pl.sda.project.libraryproject.domain.user.User;
 import pl.sda.project.libraryproject.domain.user.UserRepository;
-import pl.sda.project.libraryproject.external.book.BookEntity;
+
 
 import java.util.List;
 import java.util.Optional;

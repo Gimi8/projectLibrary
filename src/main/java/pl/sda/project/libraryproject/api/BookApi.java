@@ -1,6 +1,7 @@
 package pl.sda.project.libraryproject.api;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -33,7 +34,10 @@ public class BookApi {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity createBook(@RequestBody @Valid Book book, BindingResult bindingResult) {
+
+
         if (bindingResult.hasErrors()) {
             List<String> errors = bindingResult.getAllErrors().stream()
                     .map(err -> err.getDefaultMessage())

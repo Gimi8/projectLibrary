@@ -19,7 +19,7 @@ private Long id;
 private String title;
     @NotBlank
 private String author;
-    @Positive(message = "quantity could not be negative")
+//    @Positive(message = "quantity could not be negative")
 private int quantity;
 
 }

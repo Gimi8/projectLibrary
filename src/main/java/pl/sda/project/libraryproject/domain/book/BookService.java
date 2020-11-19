@@ -1,5 +1,6 @@
 package pl.sda.project.libraryproject.domain.book;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,7 +9,12 @@ import java.util.Optional;
 
 @Service
 public class BookService {
-    private BookRepository bookRepository;
+
+    private final BookRepository bookRepository;
+
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public void create(Book book) {
         bookRepository.create(book);

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.sda.project.libraryproject.validator.Age;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -19,7 +20,7 @@ public class User {
     private String firstname;
     @NotBlank
     private String lastname;
-    @Positive(message = "age could not be negative")
+    @Age
     private int age;
 
 

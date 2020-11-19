@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteka</title>
+</head>
+<body>
+<form method="post" th:action="@{/mvc/book/add}" th:object="${book}">
+    Tytuł: <input type="text" required th:filed="*{title}"></br>
+    Autor: <input type="text" required th:filed="*{author}"></br>
+    Ilosc: <input type="number" required th:field="*{quantity}"></br>
+
+    <input type="submit" value="Zapisz"/>
+
+
+</form>
+
+</body>
+</html>
+<!--<form method="post" th:action="@{/mvc/book/addOrEdit}" th:object="${book}">-->
+<!--    <input type="hidden" th:field="*{id}"/>-->
+<!--    Tytuł: <input type="text" required th:field="*{title}">-->
+<!--    <span th:if="${ #fileds.hasErrors('title')}" th:error="*{title}"/>-->
+<!--    </br>-->
+<!--    Autor: <input type="text" required th:field="*{author}"></br>-->
+<!--    Ilosc: <input type="number" required th:field="*{quantity}"></br>-->
+
+
+<!--    <input type="submit" value="Zapisz"/>-->
+<!--</form>-->
