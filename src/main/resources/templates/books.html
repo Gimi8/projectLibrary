@@ -29,7 +29,7 @@
 <tr th:each="book, iterStat : ${books}" th:class="${iterStat.isOdd()}? 'odd' : 'even'">
     <td><span th:text="${book.title}"/></td>
     <td><span th:text="${book.author}"/></td>
-    <td><span th:text="${book.quantity}"/></td>
+    <td><span th:text ="${book.quantity}"/></td>
 
 </tr>
 </tbody>

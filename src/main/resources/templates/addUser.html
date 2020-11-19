@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteka</title>
+</head>
+<body>
+<form method="post" th:action="@{/mvc/user/add}" th:object="${user}">
+    Imię: <input type="text" required th:filed="*{firstname}"></br>
+    Nazwisko: <input type="text" required th:filed="*{lastname}"></br>
+    Wiek: <input type="text" required th:field="*{age}"></br>
+
+    <input type="submit" value="Zapisz"/>
+
+
+</form>
+
+</body>
+</html>
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+    <style>
+        .odd{
+            background-color: goldenrod;
+        }
+        .even{
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+
+<h1
+        th:unless="${users.size() > 0}">Brak użytkowników
+</h1>
+<table th:if="${users.size() > 0}">
+    <thead>
+    <tr>
+        <td>Imię</td>
+        <td>Nazwisko</td>
+        <td>Wiek</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user, iterStat : ${users}" th:class="${iterStat.isOdd()}? 'odd' : 'even'">
+        <td><span th:text="${user.firstname}"/></td>
+        <td><span th:text="${user.lastname}"/></td>
+        <td><span th:text ="${user.age}"/></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

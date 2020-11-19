@@ -25,6 +25,7 @@ public class MainPageController {
                 .collect(Collectors.toList());
 
 
+
         ModelAndView mav = new ModelAndView();
         mav.addObject("date", LocalDate.now().toString());
         mav.addObject("titles",titles);
