@@ -1,6 +1,7 @@
 package pl.sda.project.libraryproject.web;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.validation.BindingResult;
@@ -28,6 +29,7 @@ public class BookController {
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasRole('ADMIN')")
     ModelAndView displayAddBookPage() {
         ModelAndView mav = new ModelAndView("addBook.html");
         mav.addObject("book", new Book());
@@ -37,6 +39,7 @@ public class BookController {
 
 
     @GetMapping("/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     ModelAndView displayEditBookPage(@PathVariable Long id ) {
         Optional<Book> book = bookService.getBookById(id);
         ModelAndView mav = new ModelAndView();
@@ -53,6 +56,7 @@ public class BookController {
 
     }
     @PostMapping("/addOrEdit")
+    @PreAuthorize("hasRole('ADMIN')")
     String handleAddBook(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             return "addBook.html";
@@ -69,6 +73,7 @@ public class BookController {
     }
 
     @GetMapping("/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     String handleDeleteBook(@PathVariable Long id){
         bookService.delete(id);
         return "redirect:/mvc/book";

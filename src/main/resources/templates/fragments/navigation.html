@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="thymeleaf.org">
+<html lang="pl" xmlns:th="thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Księgarnia</title>
@@ -8,9 +8,21 @@
 <div th:fragment="navigation">
     Menu:
     <ul>
-        <li><a th:href="@{/mvc/book}">Dostępne ksiązki</a></li>
         <li><a th:href="@{/}">Strona główna</a></li>
+        <li sec:authorize="isAuthenticated()"><a th:href="@{/mvc/book}">Dostępne Książki</a></li>
     </ul>
+
+    <div sec:authorize="isAuthenticated()">
+        <p>Jesteś zalogowany jako <span sec:authentication="name"/></p>
+        <form method="post" th:action="@{/mvc/logout}">
+            <input type="submit" value="Wyloguj"/>
+        </form>
+    </div>
+    <div sec:authorize="isAnonymous()">
+        <a th:href="@{/mvc/login}">Zaloguj się</a>
+        <a th:href="@{/mvc/register}">Zarejestruj konto</a>
+    </div>
+</div>
 </div>
 </body>
 </html>

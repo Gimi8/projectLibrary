@@ -28,7 +28,7 @@ public class DatabaseUserRegisterRepository implements UserRegisterRepository {
     @Override
     public Optional<UserRegister> findByUsername(String username) {
         return jpaUserRegisterRepository.findByUsername(username)
-                .map(sss -> new UserRegister(sss.getId(), sss.getUsername(),
+                .map(sss -> new UserRegister( sss.getUsername(),
                         sss.getPassword(), sss.getRole()));
     }
 

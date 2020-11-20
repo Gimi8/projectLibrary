@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wypożyczalnia aut</title>
+</head>
+<body>
+<h1>
+    Logowanie:
+</h1>
+<form method="post" th:action="@{/mvc/authenticate}">
+    Nazwa: <input type="text" name="username"/></br>
+    Hasło: <input type="password" name="password"/></br>
+    <input type="submit" value="Zaloguj">
+</form>
+</body>
+</html>
