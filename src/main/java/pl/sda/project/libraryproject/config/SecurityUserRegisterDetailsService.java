@@ -25,7 +25,7 @@ public class SecurityUserRegisterDetailsService implements UserDetailsService {
                 .map(user -> mapToUserDetails(user))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
-
+//
     private UserDetails mapToUserDetails(UserRegister userRegister) {
         //JESLI DODAJESZ ROLE DO UZYTKOWNIKA TO MUSIMY JA POPRZEDZIC PREFIXEM ROLE_
         List<GrantedAuthority> authorities =
