@@ -15,21 +15,12 @@ public class UserService {
 
 
     private UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
 
-    public void register(User user) {
-        user.encodePassword(passwordEncoder);
-
-        userRepository.create(user);
-    }
 
     public void create(User user) {
         userRepository.create(user);
     }
-
-
-
 
     public void update(User user) {
         userRepository.update(user);

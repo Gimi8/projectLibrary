@@ -21,18 +21,6 @@ private UserService userService;
 
 
 
-    @GetMapping
-    public ModelAndView displayRegisterPage() {
-        ModelAndView mav = new ModelAndView("register.html");
-        mav.addObject("user", new User());
-        return mav;
-    }
-
-    @PostMapping
-    public String handleUserRegistration(@ModelAttribute User user) {
-        userService.register(user);
-        return "redirect:/mvc/login";
-    }
 
     @GetMapping
     ModelAndView displayUserPage() {

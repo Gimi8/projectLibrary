@@ -23,10 +23,7 @@ public class DatabaseUserRepository implements UserRepository {
         return jpaUserRepository.findById(id).map(this::toDomain);
     }
 
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return Optional.empty();
-    }
+
 
     @Override
     public List<User> findAll() {
@@ -36,9 +33,6 @@ public class DatabaseUserRepository implements UserRepository {
     @Override
     public void create(User user) {
         UserEntity entity = UserEntity.builder()
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .role(user.getRole())
                 .id(user.getId())
                 .firstname(user.getFirstname())
                 .lastname(user.getLastname())
