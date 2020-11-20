@@ -24,13 +24,29 @@ public class DatabaseUserRepository implements UserRepository {
     }
 
     @Override
+    public Optional<User> findByUsername(String username) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<User> findAll() {
         return jpaUserRepository.findAll().stream().map(this::toDomain).collect(Collectors.toList());
     }
 
     @Override
     public void create(User user) {
-jpaUserRepository.save(toEntity(user));
+        UserEntity entity = UserEntity.builder()
+                .username(user.getUsername())
+                .password(user.getPassword())
+                .role(user.getRole())
+                .id(user.getId())
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
+                .age(user.getAge())
+                .build();
+                ;
+        jpaUserRepository.save(entity);
+;
     }
 
     @Override

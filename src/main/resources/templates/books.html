@@ -29,10 +29,17 @@
 <tr th:each="book, iterStat : ${books}" th:class="${iterStat.isOdd()}? 'odd' : 'even'">
     <td><span th:text="${book.title}"/></td>
     <td><span th:text="${book.author}"/></td>
-    <td><span th:text ="${book.quantity}"/></td>
-
+    <td><span th:text="${book.quantity}"/></td>
+<td>
+    <a th:href="@{/mvc/book/edit/} + ${book.id}">Edytuj</a>
+    <a th:href="@{/mvc/book/delete/} + ${book.id}">Usuń</a>
+</td>
 </tr>
 </tbody>
 </table>
+
+<a th:href="@{/mvc/book/add}">Dodaj nową książke</a>
+<div th:replace="fragments/navigation :: navigation"/>
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Księgarnia</title>
+</head>
+<body>
+
+<form method="post" th:action="@{/mvc/register}" th:object="${user}">
+    Nazwa: <input type="text" th:filed="*username}"/>
+    Hasło: <input type="password" th:filed="password}"/>
+    Rola: <select th:field="*{}username">
+    <option value="ADMIN">admin</option>
+    <option value="USER">Klient</option>
+</select></br>
+    <input type="submit" value="Zarejestruj">
+
+
+</form>
+<div th:replace="fragments/navigation :: footer"/>
+</body>
+</html>

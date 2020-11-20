@@ -5,17 +5,8 @@
     <title>Księgarnia</title>
 </head>
 <body>
-<h1>Bibioteka</h1>
-<h2>Dziś jest <span th:text="${date}"></span></h2>
-
 <div th:replace="fragments/navigation :: navigation"/>
-
-
-Dostępne ksiązki do wypożyczenia:
-<ul>
-    <li th:each="title: ${titles}">
-        <span th:text="${title}"/></li>
-
-</ul>
+<h1> Bibioteka </h1>
+<h2> Wystąpił błąd : <span th:text="${message}"/></h2>
 </body>
 </html>

@@ -1,14 +1,12 @@
 package pl.sda.project.libraryproject.api;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.sda.project.libraryproject.domain.book.Book;
 import pl.sda.project.libraryproject.domain.book.BookService;
-import pl.sda.project.libraryproject.domain.user.User;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -60,5 +58,17 @@ public class BookApi {
     public void deleteBook(@RequestParam Long bookId) {
         bookService.delete(bookId);
     }
+
+
+
+//    @PostMapping("/search")
+//    public List<Book> getByParams(@RequestBody SearchParams searchParams){
+//        return bookService.searchByParams(searchParams) ;
+//    }
+
+
+
+
+
 
 }

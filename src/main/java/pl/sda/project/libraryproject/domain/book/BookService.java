@@ -1,9 +1,7 @@
 package pl.sda.project.libraryproject.domain.book;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,5 +34,6 @@ public class BookService {
     public void delete(Long id) {
         bookRepository.delete(id);
     }
+
 
 }

@@ -3,13 +3,14 @@ package pl.sda.project.libraryproject.web;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.project.libraryproject.domain.book.Book;
 import pl.sda.project.libraryproject.domain.book.BookService;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
@@ -34,13 +35,43 @@ public class BookController {
 
     }
 
-    @PostMapping("/add")
-    String handleAddBook(@ModelAttribute("book") Book book) {
-        bookService.create(book);
 
+    @GetMapping("/edit/{id}")
+    ModelAndView displayEditBookPage(@PathVariable Long id ) {
+        Optional<Book> book = bookService.getBookById(id);
+        ModelAndView mav = new ModelAndView();
+        if (book.isPresent()){
+            mav.addObject("book",book.get());
+            mav.setViewName("addBook.html");
 
+        }else{
+            mav.addObject("message",String.format("Książka z id %d nie istnieje", id));
+            mav.setViewName("error.html");
+        }
+
+        return mav;
+
+    }
+    @PostMapping("/addOrEdit")
+    String handleAddBook(@ModelAttribute("book") @Valid Book book, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            return "addBook.html";
+        }
+
+        if (book.getId() != null) {
+            bookService.update(book);
+        } else {
+            bookService.create(book);
+        }
         return "redirect:/mvc/book";
 
 
     }
+
+    @GetMapping("/delete/{id}")
+    String handleDeleteBook(@PathVariable Long id){
+        bookService.delete(id);
+        return "redirect:/mvc/book";
+    }
+
 }

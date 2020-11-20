@@ -30,9 +30,13 @@
         <td><span th:text="${user.firstname}"/></td>
         <td><span th:text="${user.lastname}"/></td>
         <td><span th:text ="${user.age}"/></td>
-
+<td>
+    <a th:href="@{/mvc/user/edit/} + ${user.id}">Edytuj</a>
+    <a th:href="@{/mvc/user/delete/} + ${user.id}">Usuń</a>
+</td>
     </tr>
     </tbody>
 </table>
+<a th:href="@{/mvc/user/add}">Dodaj nowego uzytkownika</a>
 </body>
 </html>

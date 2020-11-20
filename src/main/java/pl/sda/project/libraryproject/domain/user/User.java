@@ -1,6 +1,7 @@
 package pl.sda.project.libraryproject.domain.user;
 
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import pl.sda.project.libraryproject.validator.Age;
 
 import javax.validation.constraints.NotBlank;
@@ -21,5 +22,11 @@ public class User {
     @Age
     private int age;
 
+    private String username;
+    private String password;
+    private String role;
 
+    public void encodePassword(PasswordEncoder passwordEncoder) {
+        password = passwordEncoder.encode(password);
+    }
 }

@@ -12,12 +12,12 @@ import javax.validation.constraints.Positive;
 @Builder
 
 
-public class Book extends java.awt.print.Book {
+public class Book {
 
     private Long id;
     @NotBlank
     private String title;
-   // @NotBlank
+   @NotBlank
     private String author;
     @Positive(message = "quantity could not be negative")
     private int quantity;

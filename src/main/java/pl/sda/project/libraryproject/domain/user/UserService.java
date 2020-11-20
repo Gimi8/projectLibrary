@@ -2,6 +2,7 @@ package pl.sda.project.libraryproject.domain.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
@@ -14,10 +15,21 @@ public class UserService {
 
 
     private UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+
+    public void register(User user) {
+        user.encodePassword(passwordEncoder);
+
+        userRepository.create(user);
+    }
 
     public void create(User user) {
         userRepository.create(user);
     }
+
+
+
 
     public void update(User user) {
         userRepository.update(user);
@@ -35,6 +47,7 @@ public class UserService {
     public void delete(Long id) {
         userRepository.delete(id);
     }
+
 
 
 }

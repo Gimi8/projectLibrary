@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Biblioteka</title>
+
+    <style>
+        .warning{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<form method="post" th:action="@{/mvc/book/add}" th:object="${book}">
-    Tytuł: <input type="text" required th:filed="*{title}"></br>
-    Autor: <input type="text" required th:filed="*{author}"></br>
-    Ilosc: <input type="text" required th:field="*{quantity}"></br>
+<div th:replace="fragments/navigation :: navigation"/>
+<form method="post" th:action="@{/mvc/book/addOrEdit}" th:object="${book}">
+    <input type="hidden" th:field="*{id}"/>
+    Tytuł: <input type="text" required th:field="*{title}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('title')}" th:errors="*{title}"></span></br>
+    Autor: <input type="text" required th:field="*{author}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('author')}" th:errors="*{author}"></span></br>
+    Ilosc: <input type="number" required th:field="*{quantity}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('quantity')}" th:errors="*{quantity}"></span></br>
 
     <input type="submit" value="Zapisz"/>
 

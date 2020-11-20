@@ -47,6 +47,8 @@ public class DataBaseBookRepository implements BookRepository {
     }
 
 
+
+
     private Book toDomain(BookEntity entity) {
         return Book.builder()
                 .id(entity.getId())

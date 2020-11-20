@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Biblioteka</title>
+    <style>
+        .warning{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<form method="post" th:action="@{/mvc/user/add}" th:object="${user}">
-    Imię: <input type="text" required th:filed="*{firstname}"></br>
-    Nazwisko: <input type="text" required th:filed="*{lastname}"></br>
-    Wiek: <input type="text" required th:field="*{age}"></br>
+<form method="post" th:action="@{/mvc/user/addOrEdit}" th:object="${user}">
+<!--    <input type="hidden" th:field="*{id}"/>-->
+    Imię: <input type="text" required th:field="*{firstname}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('firstname')}" th:errors="*{firstname}"></span></br>
+    Nazwisko: <input type="text" required th:field="*{lastname}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('lastname')}" th:errors="*{lastname}"></span></br>
+    Wiek: <input type="number" required th:field="*{age}"></br>
+    <span class="warning" th:if="${ #fields.hasErrors('age')}" th:errors="*{age}"></span></br>
 
     <input type="submit" value="Zapisz"/>
 
