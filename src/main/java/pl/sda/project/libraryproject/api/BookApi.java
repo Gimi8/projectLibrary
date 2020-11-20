@@ -61,10 +61,7 @@ public class BookApi {
 
 
 
-//    @PostMapping("/search")
-//    public List<Book> getByParams(@RequestBody SearchParams searchParams){
-//        return bookService.searchByParams(searchParams) ;
-//    }
+
 
 
 
