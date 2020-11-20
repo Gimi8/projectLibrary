@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="thymeleaf.org">
+<html lang="pl" xmlns:th="thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Księgarnia</title>
@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-
+<a sec:authorize="hasRole('ADMIN')" th:href="@{/mvc/book/add}">Dodaj nowa ksiazke</a>
 <h1
     th:unless="${books.size() > 0}">Brak książek w bibiotece
 </h1>
@@ -30,16 +30,21 @@
     <td><span th:text="${book.title}"/></td>
     <td><span th:text="${book.author}"/></td>
     <td><span th:text="${book.quantity}"/></td>
-<td>
-    <a th:href="@{/mvc/book/edit/} + ${book.id}">Edytuj</a>
-    <a th:href="@{/mvc/book/delete/} + ${book.id}">Usuń</a>
-</td>
+
+    <td sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/mvc/book/edit/} + ${book.id}">Edytuj</a>
+    </td>
+    <td sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/mvc/book/delete/} + ${book.id}">Usuń</a>
+    </td>
 </tr>
 </tbody>
 </table>
 
-<a th:href="@{/mvc/book/add}">Dodaj nową książke</a>
+
 <div th:replace="fragments/navigation :: navigation"/>
+<!--Uzupełnij brakujące dane:-->
+<!--<a th:href="@{/mvc/user/add}">Brakujące dane</a>-->
 
 </body>
 </html>

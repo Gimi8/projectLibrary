@@ -17,8 +17,9 @@ public class UserRegisterEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true, length = 100)
     private String username;
+
     private String password;
     private String role;
 }

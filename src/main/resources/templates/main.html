@@ -11,11 +11,13 @@
 <div th:replace="fragments/navigation :: navigation"/>
 
 
+
 Dostępne ksiązki do wypożyczenia:
 <ul>
     <li th:each="title: ${titles}">
         <span th:text="${title}"/></li>
 
 </ul>
+
 </body>
 </html>

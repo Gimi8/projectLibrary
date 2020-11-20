@@ -5,11 +5,11 @@
     <title>Księgarnia</title>
 </head>
 <body>
-
-<form method="post" th:action="@{/mvc/register}" th:object="${user}">
-    Nazwa: <input type="text" th:filed="*username}"/>
-    Hasło: <input type="password" th:filed="password}"/>
-    Rola: <select th:field="*{}username">
+<h1>Rejestracja</h1>
+<form method="post" th:action="@{/mvc/register}" th:object="${userRegister}">
+    Nazwa: <input type="text" th:field="*{username}"/>
+    Hasło: <input type="password" th:field="*{password}"/>
+    Rola: <select th:field="*{role}">
     <option value="ADMIN">admin</option>
     <option value="USER">Klient</option>
 </select></br>
@@ -17,6 +17,6 @@
 
 
 </form>
-<div th:replace="fragments/navigation :: footer"/>
+
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <form method="post" th:action="@{/mvc/user/addOrEdit}" th:object="${user}">
-<!--    <input type="hidden" th:field="*{id}"/>-->
+    <input type="hidden" th:field="*{id}"/>
     Imię: <input type="text" required th:field="*{firstname}"></br>
     <span class="warning" th:if="${ #fields.hasErrors('firstname')}" th:errors="*{firstname}"></span></br>
     Nazwisko: <input type="text" required th:field="*{lastname}"></br>

@@ -10,10 +10,13 @@ public class UserRegisterService {
 private  final UserRegisterRepository userRegisterRepository;
 private  final PasswordEncoder passwordEncoder;
 
-    public void create(UserRegister user) {
-        user.encodePassword(passwordEncoder);
 
-        userRegisterRepository.create(user);
 
-}}
+public void register (UserRegister userRegister){
+    userRegister.encodePassword(passwordEncoder);
+    userRegisterRepository.create(userRegister);
+
+
+}
+}
 
